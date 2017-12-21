@@ -1,0 +1,4 @@
+{
+  "name": "hillaryklingon/tmux-recipe",
+  "description": "Installs tmux with custom dotfile and plugins"
+}
