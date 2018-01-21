@@ -3,6 +3,8 @@
 CONFIG_SRC_DIR=~/Documents/configuration/src
 POWERLINE_BINDINGS="/home/linuxbrew/.linuxbrew/lib/python3.6/site-packages/powerline/bindings/tmux/powerline.conf"
 
+# TODO add powerline installation
+
 brew install tmux
 
 if [ ! -d $CONFIG_SRC_DIR/.tmux ]; then
@@ -20,9 +22,12 @@ if [ ! -f $HOME/.tmux-plugins.conf ]; then
     echo "run-shell '$CONFIG_SRC_DIR/.tmux/plugins/tpm/tpm'" > ~/.tmux-plugins.conf
 fi
 
+# TODO Call a function to prompt the user to create this file
 if [ ! -f $HOME/.tmux-powerline.conf ]; then
    echo "POWERLINE_PATH=$POWERLINE_BINDINGS" > ~/.tmux-powerline.conf
    chmod +x $POWERLINE_BINDINGS
 fi
 
 brew install urlview
+
+# TODO define default browser for urlview to work
