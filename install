@@ -5,7 +5,7 @@ POWERLINE_BINDINGS="/home/linuxbrew/.linuxbrew/lib/python3.6/site-packages/power
 
 # TODO add powerline installation
 
-brew install tmux
+brew install tmux ruby
 
 if [ ! -d $CONFIG_SRC_DIR/.tmux ]; then
     git clone https://github.com/CaptainQuirk/.tmux.git $CONFIG_SRC_DIR/.tmux
@@ -31,3 +31,5 @@ fi
 brew install urlview
 
 # TODO define default browser for urlview to work
+
+gem install tmuxinator
