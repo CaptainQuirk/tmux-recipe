@@ -7,9 +7,9 @@ brew install tmux ruby
 
 if [ ! -d $CONFIG_SRC_DIR/.tmux ]; then
     git clone https://github.com/CaptainQuirk/.tmux.git $CONFIG_SRC_DIR/.tmux
-    cd $CONFIG_SRC_DIR/.tmux
+    cd "$CONFIG_SRC_DIR/.tmux" || exit 1
     git submodule update --init --recursive
-    cd -
+    cd - || exit 2
 fi
 
 if [ ! -L ~/.tmux.conf ]; then
