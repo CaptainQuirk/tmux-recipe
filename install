@@ -16,15 +16,11 @@ if [ ! -L ~/.tmux.conf ]; then
     ln -s -f $CONFIG_SRC_DIR/.tmux/tmux.conf ~/.tmux.conf
 fi
 
-if [ ! -f $HOME/.tmux-plugins.conf ]; then
-    echo "run-shell '$CONFIG_SRC_DIR/.tmux/plugins/tpm/tpm'" > ~/.tmux-plugins.conf
-fi
-
-if [ ! -f $HOME/.tmux-powerline.conf ]; then
-   echo "POWERLINE_PATH=$POWERLINE_BINDINGS" > ~/.tmux-powerline.conf
+if [ ! -f "$HOME/.tmux-powerline.conf" ]; then
+   echo "source '/home/linuxbrew/.linuxbrew/lib/python3.6/site-packages/powerline/bindings/tmux/powerline.conf'" > ~/.tmux-powerline.conf
    chmod +x $POWERLINE_BINDINGS
 fi
 
-brew install urlview
+sudo apt-get install urlview
 
 gem install tmuxinator
