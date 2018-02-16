@@ -3,6 +3,8 @@
 CONFIG_SRC_DIR=~/Documents/configuration/src
 POWERLINE_BINDINGS="/home/linuxbrew/.linuxbrew/lib/python3.6/site-packages/powerline/bindings/tmux/powerline.conf"
 
+# TODO add powerline installation
+
 brew install tmux ruby
 
 if [ ! -d $CONFIG_SRC_DIR/.tmux ]; then
@@ -22,5 +24,7 @@ if [ ! -f "$HOME/.tmux-powerline.conf" ]; then
 fi
 
 sudo apt-get install urlview
+
+# TODO define default browser for urlview to work
 
 gem install tmuxinator
