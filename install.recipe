@@ -1,0 +1,23 @@
+brew recipe
+brew tmux
+
+git "Download tmux configuration"; do
+    repository https://github.com/CaptainQuirk/.tmux.git
+    destination "$CONFIG_SRC_DIR/.tmux"
+    enable-submodules true
+done
+
+link "Symlink global tmux.conf"; do
+    target "$CONFIG_SRC_DIR/.tmux/tmux.conf"
+    to "$HOME/.tmux.conf"
+    force true
+done
+
+apt urlview
+
+code "Install tmuxinator"; do
+    code "gem install tmuxinator"
+done
+
+
+

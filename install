@@ -1,31 +1,19 @@
 #!/bin/bash
 
-CONFIG_SRC_DIR=~/Documents/configuration/src
-POWERLINE_BINDINGS="/home/linuxbrew/.linuxbrew/lib/python3.6/site-packages/powerline/bindings/tmux/powerline.conf"
-
-# TODO add powerline installation
-
 shef brew ruby
 shef brew tmux
 
-if [ ! -d $CONFIG_SRC_DIR/.tmux ]; then
-    git clone https://github.com/CaptainQuirk/.tmux.git $CONFIG_SRC_DIR/.tmux
-    cd "$CONFIG_SRC_DIR/.tmux" || exit 1
-    git submodule update --init --recursive
-    cd - || exit 2
-fi
+shef git "Download tmux configuration" \
+    --repository https://github.com/CaptainQuirk/.tmux.git \
+    --destination "$CONFIG_SRC_DIR/.tmux" \
+    --enable-submodules
 
-if [ ! -L ~/.tmux.conf ]; then
-    ln -s -f $CONFIG_SRC_DIR/.tmux/tmux.conf ~/.tmux.conf
-fi
-
-if [ ! -f "$HOME/.tmux-powerline.conf" ]; then
-   echo "source '/home/linuxbrew/.linuxbrew/lib/python3.6/site-packages/powerline/bindings/tmux/powerline.conf'" > ~/.tmux-powerline.conf
-   chmod +x $POWERLINE_BINDINGS
-fi
+shef link "Symlink global tmux.conf" \
+    --target "$CONFIG_SRC_DIR/.tmux/tmux.conf" \
+    --to "$HOME/.tmux.conf" \
+    --force
 
 shef apt urlview
 
-# TODO define default browser for urlview to work
 
 gem install tmuxinator
